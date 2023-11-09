@@ -1,0 +1,39 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd
+      http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.5.xsd">
+    <changeSet id="set_tracking" author="albert">
+        <createTable tableName="set_tracking">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="workout_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="workout_id_pk" foreignKeyName="workout_id_fk" referencedTableName="user_workout" referencedColumnNames="id"/>
+            </column>
+            <column name="exercise_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="exercise_id_pk" foreignKeyName="exercise_id_fk" referencedTableName="exercises" referencedColumnNames="id"/>
+            </column>
+            <column name="set_number" type="BIGINT" >
+                <constraints nullable="false"/>
+            </column>
+            <column name="reps" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="weight" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <dropForeignKeyConstraint baseTableName="set_tracking" constraintName="workout_id_fk"/>
+        <addForeignKeyConstraint baseTableName="set_tracking" baseColumnNames="workout_id"
+                                 constraintName="workout_id_fk"
+                                 referencedTableName="user_workout" referencedColumnNames="id"
+                                 onDelete="CASCADE" onUpdate="CASCADE"/>
+        <dropForeignKeyConstraint baseTableName="set_tracking" constraintName="exercise_id_fk"/>
+        <addForeignKeyConstraint baseTableName="set_tracking" baseColumnNames="id"
+                                 constraintName="exercise_id_fk"
+                                 referencedTableName="exercises" referencedColumnNames="id"
+                                 onDelete="CASCADE" onUpdate="CASCADE"/>
+    </changeSet>
+</databaseChangeLog>

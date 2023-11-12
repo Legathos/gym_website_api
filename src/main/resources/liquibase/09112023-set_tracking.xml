@@ -15,6 +15,9 @@
             <column name="exercise_id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="exercise_id_pk" foreignKeyName="exercise_id_fk" referencedTableName="exercises" referencedColumnNames="id"/>
             </column>
+            <column name="set_id" type="BIGINT" >
+                <constraints nullable="false"/>
+            </column>
             <column name="set_number" type="BIGINT" >
                 <constraints nullable="false"/>
             </column>

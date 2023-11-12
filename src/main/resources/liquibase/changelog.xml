@@ -6,5 +6,12 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd
       http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.5.xsd">
 
-
+    <include file="liquibase/09112023-user_table.xml"/>
+    <include file="liquibase/09112023-user_weight.xml"/>
+    <include file="liquibase/09112023-user_intake.xml"/>
+    <include file="liquibase/09112023-food.xml"/>
+    <include file="liquibase/09112023-logger.xml"/>
+    <include file="liquibase/09112023-exercises.xml"/>
+    <include file="liquibase/09112023-workouts.xml"/>
+    <include file="liquibase/09112023-set_tracking.xml"/>
 </databaseChangeLog>

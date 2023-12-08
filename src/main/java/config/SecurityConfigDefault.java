@@ -12,11 +12,6 @@ package config;
 
         import static org.springframework.security.web.util.matcher.AntPathRequestMatcher.antMatcher;
 
-/**
- * the security configuration for local
- *
- * @author cnaghi
- */
 
 @Configuration
 @EnableMethodSecurity
@@ -31,7 +26,7 @@ public class SecurityConfigDefault {
 
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(request -> request.requestMatchers(antMatcher(HttpMethod.OPTIONS)).permitAll()
-                        .requestMatchers(antMatcher("/user/login")).permitAll())
+                        .requestMatchers(antMatcher("/login")).permitAll())
                 .authorizeHttpRequests(request -> request.requestMatchers(antMatcher("/**"))
                         .authenticated())
                 .exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))

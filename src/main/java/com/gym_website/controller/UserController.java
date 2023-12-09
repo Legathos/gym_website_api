@@ -2,6 +2,7 @@ package com.gym_website.controller;
 
 import com.gym_website.dto.ResponseDto;
 import com.gym_website.dto.UserDto;
+import com.gym_website.dto.UserWeightDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -53,5 +54,16 @@ public class UserController {
     public ResponseEntity<ResponseDto> editUser(@RequestBody UserDto userDto) {
         ResponseDto responseDto = userService.editUser(userDto);
         return responseUtilService.sendResponse(responseDto);
+    }
+
+    @PostMapping("update-weight")
+    public ResponseEntity<ResponseDto> updateWeight(@RequestBody UserWeightDto userWeightDto){
+        ResponseDto responseDto = userService.updateUserWeight(userWeightDto);
+        return responseUtilService.sendResponse(responseDto);
+    }
+
+    @GetMapping("user-{id}-weight-history")
+    public ResponseEntity<List<UserWeightDto>> userWeightHistory (@PathVariable("id") Long id){
+        return ResponseEntity.ok(this.userService.userWeightHistory(id));
     }
 }

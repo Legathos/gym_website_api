@@ -3,7 +3,7 @@ package com.gym_website.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Entity
 @Data
@@ -21,5 +21,5 @@ public class UserWeightEntity {
     private Long  weight;
 
     @Column(name = "date")
-    private Date date;
+    private LocalDateTime date;
 }

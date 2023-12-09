@@ -6,6 +6,8 @@ import com.gym_website.entity.UserEntity;
 import com.gym_website.mapper.UserMapper;import org.springframework.stereotype.Service;
 import com.gym_website.repository.UserRepository;
 
+import java.util.Optional;
+
 @Service
 public class UserService {
     private final UserRepository userRepository;
@@ -23,5 +25,16 @@ public class UserService {
         userRepository.save(userEntity);
         responseDto.setSuccessMessage("User added successfully!");
         return responseDto;
+    }
+
+    public UserDto getUserInfoById(Long id){
+        ResponseDto responseDto = new ResponseDto();
+        UserEntity userEntity = userRepository.findById(id).orElse(null);
+        return userMapper.toDto(userEntity);
+    }
+
+    public void deleteUserById(Long id) {
+        UserEntity toDelete = userRepository.findById(id).orElse(null);
+        userRepository.deleteById(id);
     }
 }

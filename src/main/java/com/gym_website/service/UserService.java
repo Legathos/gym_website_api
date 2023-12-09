@@ -20,14 +20,12 @@ public class UserService {
     private final UserRepository userRepository;
     private final UserMapper userMapper;
     private final UserWeightRepository userWeightRepository;
-    private final UserWeightMapper userWeightMapper;
     private final TimeUtilService timeUtilService;
 
-    public UserService(UserRepository userRepository, UserMapper userMapper, UserWeightRepository userWeightRepository, UserWeightMapper userWeightMapper, TimeUtilService timeUtilService) {
+    public UserService(UserRepository userRepository, UserMapper userMapper, UserWeightRepository userWeightRepository, TimeUtilService timeUtilService) {
         this.userRepository = userRepository;
         this.userMapper = userMapper;
         this.userWeightRepository = userWeightRepository;
-        this.userWeightMapper = userWeightMapper;
         this.timeUtilService = timeUtilService;
     }
 
@@ -54,7 +52,6 @@ public class UserService {
     }
 
     public void deleteUserById(Long id) {
-        UserEntity toDelete = userRepository.findById(id).orElse(null);
         userRepository.deleteById(id);
     }
 
@@ -65,7 +62,7 @@ public class UserService {
     public ResponseDto editUser(UserDto userDto) {
         ResponseDto responseDto = new ResponseDto();
         Optional<UserEntity> toEditOptional = userRepository.findById(userDto.getId());
-        if (!toEditOptional.isPresent()) {
+        if (toEditOptional.isEmpty()) {
             responseDto.setErrorMessage("User not found!");
             return responseDto;
         }

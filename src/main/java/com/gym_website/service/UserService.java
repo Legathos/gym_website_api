@@ -2,6 +2,7 @@ package com.gym_website.service;
 
 import com.gym_website.dto.ResponseDto;
 import com.gym_website.dto.UserDto;
+import com.gym_website.dto.UserLoginDto;
 import com.gym_website.dto.UserWeightDto;
 import com.gym_website.entity.UserEntity;
 import com.gym_website.entity.UserWeightEntity;
@@ -49,9 +50,20 @@ public class UserService {
         return responseDto;
     }
 
+
+
     public UserDto getUserInfoById(Long id){
         UserEntity userEntity = userRepository.findById(id).orElse(null);
         return userMapper.toDto(userEntity);
+    }
+
+    public UserDto loginUser(UserLoginDto userLoginDto) {
+        UserEntity currentUser = userRepository.findByUsername(userLoginDto.getUsername());
+        if (currentUser != null) {
+            if (userLoginDto.getPassword().equals( currentUser.getPassword()))
+                return userMapper.toDto(currentUser);
+        }
+        return null;
     }
 
     public void deleteUserById(Long id) {
@@ -106,6 +118,15 @@ public class UserService {
     public List<UserWeightDto> userWeightHistory (Long id){
         List<UserWeightDto> userWeightDtos = userWeightMapper.toDtos((List<UserWeightEntity>) userWeightRepository.findByUserId(id));
         return userWeightDtos;
+    }
+
+    public ResponseDto editPassword(UserDto userDto) {
+        ResponseDto responseDto = new ResponseDto();
+        UserEntity userEntity = userRepository.findById(userDto.getId()).orElse(null);
+        userEntity.setPassword(userDto.getPassword());
+        userRepository.save(userEntity);
+        responseDto.setSuccessMessage("User password changed successfully!");
+        return responseDto;
     }
 
 }

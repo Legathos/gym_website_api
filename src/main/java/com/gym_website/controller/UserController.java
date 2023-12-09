@@ -2,7 +2,9 @@ package com.gym_website.controller;
 
 import com.gym_website.dto.ResponseDto;
 import com.gym_website.dto.UserDto;
+import com.gym_website.dto.UserLoginDto;
 import com.gym_website.dto.UserWeightDto;
+import org.mapstruct.control.MappingControl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +26,15 @@ public class UserController {
     }
 
 
+
+    @PostMapping("login")
+        public ResponseEntity<String> loginUser(@RequestBody UserLoginDto userLoginDto) {
+        UserDto userDto = userService.loginUser(userLoginDto);
+        if (userDto != null) {
+            return ResponseEntity.ok("login successful");
+        }
+        return ResponseEntity.ok("error");
+    }
     @PostMapping("register")
     public ResponseEntity<ResponseDto> register(@RequestBody UserDto userDto) {
         ResponseDto responseDto = userService.register(userDto);
@@ -65,5 +76,10 @@ public class UserController {
     @GetMapping("user-{id}-weight-history")
     public ResponseEntity<List<UserWeightDto>> userWeightHistory (@PathVariable("id") Long id){
         return ResponseEntity.ok(this.userService.userWeightHistory(id));
+    }
+    @PutMapping("change-password")
+    public ResponseEntity<ResponseDto> changePassword(@RequestBody UserDto userDto){
+        ResponseDto responseDto = userService.editPassword(userDto);
+        return responseUtilService.sendResponse(responseDto);
     }
 }

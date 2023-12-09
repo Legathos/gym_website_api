@@ -61,4 +61,9 @@ public class UserController {
         ResponseDto responseDto = userService.updateUserWeight(userWeightDto);
         return responseUtilService.sendResponse(responseDto);
     }
+
+    @GetMapping("user-{id}-weight-history")
+    public ResponseEntity<List<UserWeightDto>> userWeightHistory (@PathVariable("id") Long id){
+        return ResponseEntity.ok(this.userService.userWeightHistory(id));
+    }
 }

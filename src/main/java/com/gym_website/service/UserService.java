@@ -12,6 +12,7 @@ import com.gym_website.service.utils.TimeUtilService;
 import org.springframework.stereotype.Service;
 import com.gym_website.repository.UserRepository;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,12 +22,14 @@ public class UserService {
     private final UserMapper userMapper;
     private final UserWeightRepository userWeightRepository;
     private final TimeUtilService timeUtilService;
+    private final UserWeightMapper userWeightMapper;
 
-    public UserService(UserRepository userRepository, UserMapper userMapper, UserWeightRepository userWeightRepository, TimeUtilService timeUtilService) {
+    public UserService(UserRepository userRepository, UserMapper userMapper, UserWeightRepository userWeightRepository, TimeUtilService timeUtilService, UserWeightMapper userWeightMapper) {
         this.userRepository = userRepository;
         this.userMapper = userMapper;
         this.userWeightRepository = userWeightRepository;
         this.timeUtilService = timeUtilService;
+        this.userWeightMapper = userWeightMapper;
     }
 
 
@@ -98,6 +101,11 @@ public class UserService {
         ResponseDto responseDto = new ResponseDto();
         responseDto.setSuccessMessage("User weight updated");
         return responseDto;
+    }
+
+    public List<UserWeightDto> userWeightHistory (Long id){
+        List<UserWeightDto> userWeightDtos = userWeightMapper.toDtos((List<UserWeightEntity>) userWeightRepository.findByUserId(id));
+        return userWeightDtos;
     }
 
 }

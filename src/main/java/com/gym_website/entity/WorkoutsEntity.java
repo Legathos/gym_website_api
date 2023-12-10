@@ -7,11 +7,11 @@ import java.util.Date;
 
 @Entity
 @Data
-@Table(name = "workouts")
+@Table(name = "user_workout")
 public class WorkoutsEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "workouts_id_seq")
-    @SequenceGenerator(name = "workouts_id_seq", sequenceName = "workouts_id_seq",allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "user_workout_id_seq")
+    @SequenceGenerator(name = "user_workout_id_seq", sequenceName = "user_workout_id_seq",allocationSize = 1)
     private Long id;
 
     @Column(name = "user_id")

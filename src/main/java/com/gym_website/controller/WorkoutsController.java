@@ -32,6 +32,11 @@ public class WorkoutsController {
         return ResponseEntity.ok(workoutsService.getAllWorkouts());
     }
 
+    @GetMapping("get-workouts-by-userid-{id}")
+    public ResponseEntity getWorkoutsByUserId(@PathVariable("id")Long id){
+        return ResponseEntity.ok(workoutsService.getAllWorkoutsByUserId(id));
+    }
+
     @PutMapping("edit-workout")
     public ResponseEntity editWorkout(@RequestBody WorkoutsDto workoutsDto){
         return ResponseEntity.ok(workoutsService.editWorkout(workoutsDto));

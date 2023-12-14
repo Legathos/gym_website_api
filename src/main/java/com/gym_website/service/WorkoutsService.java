@@ -38,6 +38,11 @@ public class WorkoutsService {
         return workoutsMapper.toDtos(workoutsEntities);
     }
 
+    public List<WorkoutsDto> getAllWorkoutsByUserId(Long id){
+        List<WorkoutsEntity> workoutsEntities = workoutsRepository.findByUserId(id);
+        return  workoutsMapper.toDtos(workoutsEntities);
+    }
+
     public ResponseDto editWorkout (WorkoutsDto workoutsDto){
         ResponseDto responseDto = new ResponseDto();
         WorkoutsEntity workoutsEntity = new WorkoutsEntity();

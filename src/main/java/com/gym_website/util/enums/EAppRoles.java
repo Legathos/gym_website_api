@@ -2,9 +2,7 @@ package com.gym_website.util.enums;
 
 
 public enum EAppRoles {
-    ADMIN("admin"),
-    USER("user"),
-    MEMBER("MEMBER");
+    MEMBER("member");
 
 
 

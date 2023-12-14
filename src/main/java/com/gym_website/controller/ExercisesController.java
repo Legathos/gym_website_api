@@ -35,7 +35,7 @@ public class ExercisesController {
     }
 
 
-    @GetMapping("get-{category}-exercises")
+    @GetMapping("get-exercises-by-{category}")
     @PreAuthorize("hasAuthority(T(com.gym_website.util.enums.EAppRoles).MEMBER)")
     public ResponseEntity getExercisesByCategory(@PathVariable("category")Long category){
         return ResponseEntity.ok(exercisesService.gelExercisesByCategory(String.valueOf(category)));

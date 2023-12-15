@@ -59,6 +59,11 @@ public class UserService {
         return userMapper.toDto(userEntity);
     }
 
+    public UserDto getUserInfoByUsername( String username){
+        UserEntity userEntity = userRepository.findByUsername(username);
+        return userMapper.toDto(userEntity);
+    }
+
     public UserDto loginUser(UserLoginDto userLoginDto) {
         UserEntity currentUser = userRepository.findByUsername(userLoginDto.getUsername());
         if (currentUser != null) {
@@ -129,7 +134,7 @@ public class UserService {
     public ResponseDto editPassword(UserDto userDto) {
         ResponseDto responseDto = new ResponseDto();
         UserEntity userEntity = userRepository.findById(userDto.getId()).orElse(null);
-        userEntity.setPassword(userDto.getPassword());
+        userEntity.setPassword(passwordEncoder.encode(userDto.getPassword()));
         userRepository.save(userEntity);
         responseDto.setSuccessMessage("User password changed successfully!");
         return responseDto;

@@ -49,16 +49,21 @@ public class UserController {
     }
 
     @PostMapping("register")
-    @SneakyThrows
     public ResponseEntity<ResponseDto> register(@RequestBody UserDto userDto) {
         ResponseDto responseDto = userService.register(userDto);
         return responseUtilService.sendResponse(responseDto);
     }
 
     @PreAuthorize("hasAuthority(T(com.gym_website.util.enums.EAppRoles).MEMBER)")
-    @GetMapping("get-user-info-{id}")
+    @GetMapping("get-user-id-{id}")
     public ResponseEntity<UserDto> getUserInfoById (@PathVariable("id") Long id){
         return ResponseEntity.ok(this.userService.getUserInfoById(id));
+    }
+
+    @PreAuthorize("hasAuthority(T(com.gym_website.util.enums.EAppRoles).MEMBER)")
+    @GetMapping("get-user-username-{username}")
+    public ResponseEntity<UserDto> getUserInfoByUsername (@PathVariable("username") String username){
+        return ResponseEntity.ok(this.userService.getUserInfoByUsername(username));
     }
 
     @GetMapping("get-all-users")
@@ -85,14 +90,14 @@ public class UserController {
     }
 
     @PreAuthorize("hasAuthority(T(com.gym_website.util.enums.EAppRoles).MEMBER)")
-    @PostMapping("update-weight")
+    @PostMapping("update-user-weight")
     public ResponseEntity<ResponseDto> updateWeight(@RequestBody UserWeightDto userWeightDto){
         ResponseDto responseDto = userService.updateUserWeight(userWeightDto);
         return responseUtilService.sendResponse(responseDto);
     }
 
     @PreAuthorize("hasAuthority(T(com.gym_website.util.enums.EAppRoles).MEMBER)")
-    @GetMapping("user-{id}-weight-history")
+    @GetMapping("weight-history-user-{id}")
     public ResponseEntity<List<UserWeightDto>> userWeightHistory (@PathVariable("id") Long id){
         return ResponseEntity.ok(this.userService.userWeightHistory(id));
     }

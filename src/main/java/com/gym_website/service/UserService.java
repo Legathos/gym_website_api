@@ -59,6 +59,11 @@ public class UserService {
         return userMapper.toDto(userEntity);
     }
 
+    public UserDto getUserInfoByUsername( String username){
+        UserEntity userEntity = userRepository.findByUsername(username);
+        return userMapper.toDto(userEntity);
+    }
+
     public UserDto loginUser(UserLoginDto userLoginDto) {
         UserEntity currentUser = userRepository.findByUsername(userLoginDto.getUsername());
         if (currentUser != null) {

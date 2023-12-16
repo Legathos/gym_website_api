@@ -13,4 +13,6 @@
     <include file="liquibase/09112023-exercises.xml"/>
     <include file="liquibase/09112023-workouts.xml"/>
     <include file="liquibase/09112023-set_tracking.xml"/>
+    <include file="liquibase/15122023-goals_table.xml"/>
+    <include file="liquibase/15122023-add_achievements.xml"/>
 </databaseChangeLog>

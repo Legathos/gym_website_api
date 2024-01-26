@@ -1,0 +1,171 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd
+      http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.5.xsd">
+    <changeSet id="food-pop" author="albert">
+        <insert tableName="food">
+            <column name="name" value="Chicken Breast"/>
+            <column name="weight" value="100"/>
+            <column name="calories" value="165"/>
+            <column name="carbs" value="0"/>
+            <column name="fats" value="3.6"/>
+            <column name="protein" value="31"/>
+        </insert>
+
+        <insert tableName="food">
+            <column name="name" value="Salmon"/>
+            <column name="weight" value="100"/>
+            <column name="calories" value="206"/>
+            <column name="carbs" value="0"/>
+            <column name="fats" value="13.4"/>
+            <column name="protein" value="22"/>
+        </insert>
+
+        <insert tableName="food">
+            <column name="name" value="Broccoli"/>
+            <column name="weight" value="100"/>
+            <column name="calories" value="55"/>
+            <column name="carbs" value="11"/>
+            <column name="fats" value="0.6"/>
+            <column name="protein" value="3.7"/>
+        </insert>
+
+        <insert tableName="food">
+            <column name="name" value="Brown Rice"/>
+            <column name="weight" value="100"/>
+            <column name="calories" value="111"/>
+            <column name="carbs" value="23"/>
+            <column name="fats" value="0.9"/>
+            <column name="protein" value="2.6"/>
+        </insert>
+
+        <insert tableName="food">
+            <column name="name" value="Sweet Potato"/>
+            <column name="weight" value="100"/>
+            <column name="calories" value="86"/>
+            <column name="carbs" value="20"/>
+            <column name="fats" value="0.1"/>
+            <column name="protein" value="1.6"/>
+        </insert>
+
+        <insert tableName="food">
+            <column name="name" value="Avocado"/>
+            <column name="weight" value="100"/>
+            <column name="calories" value="160"/>
+            <column name="carbs" value="9"/>
+            <column name="fats" value="15"/>
+            <column name="protein" value="2"/>
+        </insert>
+
+        <insert tableName="food">
+            <column name="name" value="Spinach"/>
+            <column name="weight" value="100"/>
+            <column name="calories" value="23"/>
+            <column name="carbs" value="3.6"/>
+            <column name="fats" value="0.4"/>
+            <column name="protein" value="2.9"/>
+        </insert>
+
+        <insert tableName="food">
+            <column name="name" value="Eggs"/>
+            <column name="weight" value="100"/>
+            <column name="calories" value="155"/>
+            <column name="carbs" value="1.1"/>
+            <column name="fats" value="10.6"/>
+            <column name="protein" value="12.6"/>
+        </insert>
+
+        <insert tableName="food">
+            <column name="name" value="Quinoa"/>
+            <column name="weight" value="100"/>
+            <column name="calories" value="120"/>
+            <column name="carbs" value="21"/>
+            <column name="fats" value="1.9"/>
+            <column name="protein" value="4"/>
+        </insert>
+
+        <insert tableName="food">
+            <column name="name" value="Greek Yogurt"/>
+            <column name="weight" value="100"/>
+            <column name="calories" value="59"/>
+            <column name="carbs" value="3.6"/>
+            <column name="fats" value="3.3"/>
+            <column name="protein" value="10"/>
+        </insert>
+
+        <insert tableName="food">
+            <column name="name" value="Almonds"/>
+            <column name="weight" value="100"/>
+            <column name="calories" value="576"/>
+            <column name="carbs" value="21"/>
+            <column name="fats" value="49"/>
+            <column name="protein" value="21"/>
+        </insert>
+
+        <insert tableName="food">
+            <column name="name" value="Oatmeal"/>
+            <column name="weight" value="100"/>
+            <column name="calories" value="68"/>
+            <column name="carbs" value="12"/>
+            <column name="fats" value="1.4"/>
+            <column name="protein" value="2.4"/>
+        </insert>
+
+        <insert tableName="food">
+            <column name="name" value="Banana"/>
+            <column name="weight" value="100"/>
+            <column name="calories" value="105"/>
+            <column name="carbs" value="27"/>
+            <column name="fats" value="0.3"/>
+            <column name="protein" value="1.3"/>
+        </insert>
+
+        <insert tableName="food">
+            <column name="name" value="Cottage Cheese"/>
+            <column name="weight" value="100"/>
+            <column name="calories" value="98"/>
+            <column name="carbs" value="3.4"/>
+            <column name="fats" value="4.3"/>
+            <column name="protein" value="11"/>
+        </insert>
+
+        <insert tableName="food">
+            <column name="name" value="Tuna"/>
+            <column name="weight" value="100"/>
+            <column name="calories" value="130"/>
+            <column name="carbs" value="0"/>
+            <column name="fats" value="1"/>
+            <column name="protein" value="30"/>
+        </insert>
+
+        <insert tableName="food">
+            <column name="name" value="Carrot"/>
+            <column name="weight" value="100"/>
+            <column name="calories" value="41"/>
+            <column name="carbs" value="10"/>
+            <column name="fats" value="0.2"/>
+            <column name="protein" value="0.9"/>
+        </insert>
+
+        <insert tableName="food">
+            <column name="name" value="Beef Steak"/>
+            <column name="weight" value="100"/>
+            <column name="calories" value="250"/>
+            <column name="carbs" value="0"/>
+            <column name="fats" value="26"/>
+            <column name="protein" value="26"/>
+        </insert>
+
+        <insert tableName="food">
+            <column name="name" value="Blueberries"/>
+            <column name="weight" value="100"/>
+            <column name="calories" value="57"/>
+            <column name="carbs" value="14"/>
+            <column name="fats" value="0.3"/>
+            <column name="protein" value="0.7"/>
+        </insert>
+
+    </changeSet>
+</databaseChangeLog>

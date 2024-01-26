@@ -15,4 +15,5 @@
     <include file="liquibase/09112023-set_tracking.xml"/>
     <include file="liquibase/15122023-goals_table.xml"/>
     <include file="liquibase/15122023-add_achievements.xml"/>
+    <include file="liquibase/19122023-added-food.xml"/>
 </databaseChangeLog>

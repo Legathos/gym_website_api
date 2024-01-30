@@ -140,4 +140,12 @@ public class UserService {
         return responseDto;
     }
 
+    public boolean checkIfUserExists(String username){
+        if (userRepository.findByUsername(username)==null){
+            return false;
+        }
+        else
+            return true;
+    }
+
 }

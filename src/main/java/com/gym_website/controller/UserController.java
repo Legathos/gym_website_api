@@ -25,12 +25,10 @@ public class UserController {
     private final UserService userService;
     private final ResponseUtilService responseUtilService;
     private final JwtTokenService jwtTokenService;
-    private final LoginUtilService loginUtilService;
     public UserController(UserService userService, ResponseUtilService responseUtilService, JwtTokenService jwtTokenService, LoginUtilService loginUtilService) {
         this.userService = userService;
         this.responseUtilService = responseUtilService;
         this.jwtTokenService = jwtTokenService;
-        this.loginUtilService = loginUtilService;
     }
 
 
@@ -50,12 +48,8 @@ public class UserController {
 
     @PostMapping("register")
     public ResponseEntity<ResponseDto> register(@RequestBody UserDto userDto) {
-        if(userService.checkIfUserExists(userDto.getUsername())){
-            return new ResponseEntity<>(HttpStatus.FOUND);
-        }else{
             ResponseDto responseDto = userService.register(userDto);
             return responseUtilService.sendResponse(responseDto);
-        }
     }
 
     @PreAuthorize("hasAuthority(T(com.gym_website.util.enums.EAppRoles).MEMBER)")

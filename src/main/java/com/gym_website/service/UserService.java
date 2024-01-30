@@ -38,17 +38,22 @@ public class UserService {
 
     public ResponseDto register(UserDto userDto) {
         ResponseDto responseDto = new ResponseDto();
-        UserEntity userEntity = userMapper.toEntity(userDto);
-        userEntity.setPassword(passwordEncoder.encode(userEntity.getPassword()));
-        userRepository.save(userEntity);
-        responseDto.setSuccessMessage("User added successfully!");
 
-        UserWeightEntity userWeightEntity = new UserWeightEntity();
-        userWeightEntity.setUser_id(userEntity.getId());
-        userWeightEntity.setWeight(userDto.getWeight());
-        userWeightEntity.setDate(timeUtilService.getTime());
+        if (checkIfUserExists(userDto.getUsername())){
+            UserEntity userEntity = userMapper.toEntity(userDto);
+            userEntity.setPassword(passwordEncoder.encode(userEntity.getPassword()));
+            userRepository.save(userEntity);
+            responseDto.setSuccessMessage("User added successfully!");
 
-        userWeightRepository.save(userWeightEntity);
+            UserWeightEntity userWeightEntity = new UserWeightEntity();
+            userWeightEntity.setUser_id(userEntity.getId());
+            userWeightEntity.setWeight(userDto.getWeight());
+            userWeightEntity.setDate(timeUtilService.getTime());
+
+            userWeightRepository.save(userWeightEntity);
+        }else{
+            responseDto.setErrorMessage("User already exists!");
+        }
 
         return responseDto;
     }
@@ -127,13 +132,13 @@ public class UserService {
     }
 
     public List<UserWeightDto> userWeightHistory (Long id){
-        List<UserWeightDto> userWeightDtos = userWeightMapper.toDtos((List<UserWeightEntity>) userWeightRepository.findByUserId(id));
-        return userWeightDtos;
+        return userWeightMapper.toDtos((List<UserWeightEntity>) userWeightRepository.findByUserId(id));
     }
 
     public ResponseDto editPassword(UserDto userDto) {
         ResponseDto responseDto = new ResponseDto();
         UserEntity userEntity = userRepository.findById(userDto.getId()).orElse(null);
+        assert userEntity != null;
         userEntity.setPassword(passwordEncoder.encode(userDto.getPassword()));
         userRepository.save(userEntity);
         responseDto.setSuccessMessage("User password changed successfully!");
@@ -141,11 +146,7 @@ public class UserService {
     }
 
     public boolean checkIfUserExists(String username){
-        if (userRepository.findByUsername(username)==null){
-            return false;
-        }
-        else
-            return true;
+        return userRepository.findByUsername(username) == null;
     }
 
 }

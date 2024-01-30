@@ -50,8 +50,12 @@ public class UserController {
 
     @PostMapping("register")
     public ResponseEntity<ResponseDto> register(@RequestBody UserDto userDto) {
-        ResponseDto responseDto = userService.register(userDto);
-        return responseUtilService.sendResponse(responseDto);
+        if(userService.checkIfUserExists(userDto.getUsername())){
+            return new ResponseEntity<>(HttpStatus.FOUND);
+        }else{
+            ResponseDto responseDto = userService.register(userDto);
+            return responseUtilService.sendResponse(responseDto);
+        }
     }
 
     @PreAuthorize("hasAuthority(T(com.gym_website.util.enums.EAppRoles).MEMBER)")

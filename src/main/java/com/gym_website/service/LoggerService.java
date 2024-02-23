@@ -37,6 +37,7 @@ public class LoggerService {
 
     public ResponseDto editLog(LoggerDto loggerDto) {
     LoggerEntity loggerEntity = loggerRepository.findById(loggerDto.getId()).orElse(null);
+    assert loggerEntity != null;
     loggerEntity.setCalories(loggerDto.getCalories());
     loggerEntity.setDate(loggerDto.getDate());
     loggerEntity.setFats(loggerDto.getFats());

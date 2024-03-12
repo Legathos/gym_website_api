@@ -7,7 +7,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
+import java.text.ParseException;
 
 @Controller
 @RequestMapping("/logger")
@@ -25,9 +25,9 @@ public class LoggerController {
         return ResponseEntity.ok(this.loggerService.addNewLog(loggerDto));
     }
 
-    @GetMapping("get-logs-for-{user}-{date}")
+    @GetMapping("get-logs-for-{user}/{date}")
     @PreAuthorize("hasAuthority(T(com.gym_website.util.enums.EAppRoles).MEMBER)")
-    public ResponseEntity getLogsByUserIdAndDate(@PathVariable("user")Long userId, @PathVariable("date") Date date){
+    public ResponseEntity getLogsByUserIdAndDate(@PathVariable("user")Long userId, @PathVariable("date") String date) throws ParseException {
         return ResponseEntity.ok(this.loggerService.getLogsForUserIdAndDate(userId,date));
     }
 

@@ -7,10 +7,11 @@ import com.gym_website.mapper.LoggerMapper;
 import com.gym_website.repository.LoggerRepository;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 
 @Service
 public class LoggerService {
@@ -31,7 +32,10 @@ public class LoggerService {
         return responseDto;
     }
 
-    public List<LoggerDto> getLogsForUserIdAndDate(Long userId, Date date){
+    public List<LoggerDto> getLogsForUserIdAndDate(Long userId, String dateString) throws ParseException {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = dateFormat.parse(dateString);
+
         return loggerMapper.toDtos(loggerRepository.findByUserIdAndDate(userId,date));
     }
 

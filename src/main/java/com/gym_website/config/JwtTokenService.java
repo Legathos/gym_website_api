@@ -38,10 +38,8 @@ public class JwtTokenService {
 
     public Authentication getAuthentication(final HttpServletRequest request) {
         Authentication auth = null;
-        // we still need the old header for various external services calling gfs
         final String token = Optional.ofNullable(request.getHeader(HEADER_STRING)).orElse(null);
         try {
-            // use token != null && token.isBlack() if jdk11
             if (token != null && !("").equals(token)) {
                 // parse the token.
                 Jws<Claims> claims;
@@ -50,20 +48,19 @@ public class JwtTokenService {
                         .parseClaimsJws(token);
                 if (null != claims) {
                     // Check if there is a userId present
-                    final String userId = Optional//
-                            .ofNullable(claims.getBody().get(CLAIM_USER))//
-                            .map(Object::toString)//
+                    final String userId = Optional
+                            .ofNullable(claims.getBody().get(CLAIM_USER))
+                            .map(Object::toString)
                             .orElseThrow(
                                     () -> new AuthenticationCredentialsNotFoundException("No username given in jwt"));
                     // check roles
-                    String role = Optional//
-                            .ofNullable(claims.getBody().get(CLAIM_ROLES))//
-                            .map(Object::toString)//
+                    String role = Optional
+                            .ofNullable(claims.getBody().get(CLAIM_ROLES))
+                            .map(Object::toString)
                             .orElseThrow(
                                     () -> new AuthenticationCredentialsNotFoundException("No roles given in jwt"));
 
-                    // [ADMIN] -> ADMIN
-                    role = role.replaceAll("\\[|\\]", "");
+
                     ArrayList<GrantedAuthority> authorities = new ArrayList<>();
                     authorities.add(new SimpleGrantedAuthority(role));
                     auth = new UsernamePasswordAuthenticationToken(userId, null, authorities);
@@ -80,11 +77,11 @@ public class JwtTokenService {
                     ex.getMessage());
             throw new JwtAuthenticationException(ex);
         } catch (final AuthenticationCredentialsNotFoundException ex) {
-            log.error("An error occured while trying to create authentication based on jwt token, missing credentials {}",
+            log.error("An error occurred while trying to create authentication based on jwt token, missing credentials {}",
                     ex.getMessage());
             throw new JwtAuthenticationException(ex);
         } catch (final Exception ex) {
-            log.error("Unexpected exception occured while parsing jwt {} exception: {}",
+            log.error("Unexpected exception occurred while parsing jwt {} exception: {}",
                     token,
                     ex.getMessage());
             throw new JwtAuthenticationException(ex);
@@ -98,12 +95,12 @@ public class JwtTokenService {
         // create the jwt token
         String jwtToken;
 
-        jwtToken = Jwts.builder()//
-                .claim(CLAIM_USER, userId)//
-                .claim(CLAIM_ROLES, role)//
-                .setExpiration(new Date(System.currentTimeMillis() + EXPIRATIONTIME))//
-                .signWith(getSigningKey())//
-                .compact();//
+        jwtToken = Jwts.builder()
+                .claim(CLAIM_USER, userId)
+                .claim(CLAIM_ROLES, role)
+                .setExpiration(new Date(System.currentTimeMillis() + EXPIRATIONTIME))
+                .signWith(getSigningKey())
+                .compact();
         return jwtToken;
     }
 

@@ -48,6 +48,7 @@ public class LoggerService {
     loggerEntity.setCarbs(loggerDto.getCarbs());
     loggerEntity.setProtein(loggerDto.getProtein());
     loggerEntity.setWeight(loggerDto.getWeight());
+    loggerEntity.setFood_name(loggerDto.getFood_name());
 
     loggerRepository.save(loggerEntity);
 

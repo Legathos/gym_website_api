@@ -10,6 +10,7 @@ public class LoggerDto {
     private Long user_id;
     private Date date;
     private Long food_id;
+    private String food_name;
     private Long weight;
     private Long calories;
     private Long carbs;

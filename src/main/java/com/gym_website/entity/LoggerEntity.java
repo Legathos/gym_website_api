@@ -23,6 +23,9 @@ public class LoggerEntity {
     @Column(name = "food_id")
     private Long food_id;
 
+    @Column(name = "food_name")
+    private String food_name;
+
     @Column(name = "weight")
     private Long weight;
 

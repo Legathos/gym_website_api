@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.gym_website.repository.ExercisesRepository;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -49,7 +50,7 @@ public class ExercisesService {
     public ResponseDto deleteExercise(Long id){
         ResponseDto responseDto = new ResponseDto();
         if (exercisesRepository.findById(id).orElse(null)!=null){
-            exercisesRepository.delete(exercisesRepository.findById(id).orElse(null));
+            exercisesRepository.delete(Objects.requireNonNull(exercisesRepository.findById(id).orElse(null)));
             responseDto.setSuccessMessage("Exercise deleted");
         }else{
         responseDto.setErrorMessage("Exercise not found");

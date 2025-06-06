@@ -44,4 +44,10 @@ public class FoodController {
     public ResponseEntity getFoodItems(){
         return ResponseEntity.ok(this.foodService.getFoodItems());
     }
+
+    @GetMapping("get-food-items-{name}")
+    @PreAuthorize("hasAnyAuthority(T(com.gym_website.util.enums.EAppRoles).MEMBER)")
+    public ResponseEntity getFoodItemsByName(@PathVariable("name")String name){
+        return ResponseEntity.ok(this.foodService.getFoodItemsByName(name));
+    }
 }

@@ -27,6 +27,8 @@ public class SecurityConfigDefault {
 
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(request -> request.requestMatchers(antMatcher(HttpMethod.OPTIONS)).permitAll()
+                        .requestMatchers(antMatcher("/user/get-all-users")).permitAll())
+                .authorizeHttpRequests(request -> request.requestMatchers(antMatcher(HttpMethod.OPTIONS)).permitAll()
                         .requestMatchers(antMatcher("/user/register")).permitAll())
                 .authorizeHttpRequests(request -> request.requestMatchers(antMatcher(HttpMethod.OPTIONS)).permitAll()
                         .requestMatchers(antMatcher("/user/login")).permitAll())

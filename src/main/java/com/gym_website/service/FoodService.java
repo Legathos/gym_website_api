@@ -63,4 +63,8 @@ public class FoodService {
         return foodMapper.toDtos(foodEntities);
     }
 
+    public List<FoodDto> getFoodItemsByName(String name) {
+        List<FoodEntity> foodEntities = foodRepository.findAllByNameContainingIgnoreCase(name);
+        return foodMapper.toDtos(foodEntities);
+    }
 }

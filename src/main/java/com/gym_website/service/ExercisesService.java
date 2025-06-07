@@ -4,13 +4,11 @@ import com.gym_website.dto.ExercisesDto;
 import com.gym_website.dto.ResponseDto;
 import com.gym_website.entity.ExercisesEntity;
 import com.gym_website.mapper.ExercisesMapper;
-import org.apache.coyote.Response;
 import org.springframework.stereotype.Service;
 import com.gym_website.repository.ExercisesRepository;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 
 @Service
 public class ExercisesService {

@@ -26,20 +26,23 @@ public class LoggerEntity {
     @Column(name = "food_name")
     private String food_name;
 
+    @Column(name = "meal")
+    private Integer meal;
+
     @Column(name = "weight")
-    private Long weight;
+    private Double weight;
 
     @Column(name = "calories")
     private Long calories;
 
     @Column(name = "carbs")
-    private Long carbs;
+    private Double carbs;
 
     @Column(name = "fats")
-    private Long fats;
+    private Double fats;
 
     @Column(name = "protein")
-    private Long protein;
+    private Double protein;
 
 
 }

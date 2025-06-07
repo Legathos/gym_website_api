@@ -5,7 +5,6 @@ import com.gym_website.dto.ResponseDto;
 import com.gym_website.entity.FoodEntity;
 import com.gym_website.mapper.FoodMapper;
 import com.gym_website.repository.FoodRepository;
-import org.apache.coyote.Response;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

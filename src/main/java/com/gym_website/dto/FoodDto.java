@@ -6,9 +6,9 @@ import lombok.Data;
 public class FoodDto {
     private Long id;
     private String name;
-    private Long weight;
+    private Double weight;
     private Long calories;
-    private Long carbs;
-    private Long fats;
-    private Long protein;
+    private Double carbs;
+    private Double fats;
+    private Double protein;
 }

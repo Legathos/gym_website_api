@@ -11,9 +11,10 @@ public class LoggerDto {
     private Date date;
     private Long food_id;
     private String food_name;
-    private Long weight;
+    private Integer meal;
+    private Double weight;
     private Long calories;
-    private Long carbs;
-    private Long fats;
-    private Long protein;
+    private Double carbs;
+    private Double fats;
+    private Double protein;
 }

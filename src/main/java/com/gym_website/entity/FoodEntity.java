@@ -17,17 +17,17 @@ public class FoodEntity {
     private String name;
 
     @Column(name = "weight")
-    private Long weight;
+    private Double weight;
 
     @Column(name = "calories")
     private Long calories;
 
     @Column(name = "carbs")
-    private Long carbs;
+    private Double carbs;
 
     @Column(name = "fats")
-    private Long fats;
+    private Double fats;
 
     @Column(name = "protein")
-    private Long protein;
+    private Double protein;
 }

@@ -2,9 +2,11 @@ package com.gym_website.controller;
 
 import com.gym_website.dto.FoodDto;
 import com.gym_website.service.FoodService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 @RestController
 @RequestMapping("/food")
@@ -49,5 +51,19 @@ public class FoodController {
     @PreAuthorize("hasAnyAuthority(T(com.gym_website.util.enums.EAppRoles).MEMBER)")
     public ResponseEntity getFoodItemsByName(@PathVariable("name")String name){
         return ResponseEntity.ok(this.foodService.getFoodItemsByName(name));
+    }
+
+    @GetMapping("/get-food-item-barcode-{barcode}")
+    @PreAuthorize("hasAnyAuthority(T(com.gym_website.util.enums.EAppRoles).MEMBER)")
+    public ResponseEntity<?> getFoodData(@PathVariable String barcode) {
+        String apiUrl = "https://world.openfoodfacts.org/api/v0/product/" + barcode + ".json";
+
+        try {
+            RestTemplate restTemplate = new RestTemplate();
+            ResponseEntity<String> response = restTemplate.getForEntity(apiUrl, String.class);
+            return ResponseEntity.ok(response.getBody());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to fetch food data.");
+        }
     }
 }

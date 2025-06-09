@@ -66,4 +66,10 @@ public class FoodController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to fetch food data.");
         }
     }
+
+    @GetMapping("/get-food-item-by-barcode-{barcode}")
+    @PreAuthorize("hasAnyAuthority(T(com.gym_website.util.enums.EAppRoles).MEMBER)")
+    public ResponseEntity getFoodItemByBarcode(@PathVariable Long barcode) {
+        return ResponseEntity.ok(this.foodService.getFoodItemByBarcode(barcode));
+    }
 }

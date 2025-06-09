@@ -13,6 +13,9 @@ public class FoodEntity {
     @SequenceGenerator( name = "food_id_seq", sequenceName = "food_id_seq", allocationSize = 1)
     private Long id;
 
+    @Column(name = "barcode")
+    private Long barcode;
+
     @Column(name = "name")
     private String name;
 

@@ -5,6 +5,7 @@ import lombok.Data;
 @Data
 public class FoodDto {
     private Long id;
+    private Long barcode;
     private String name;
     private Double weight;
     private Long calories;

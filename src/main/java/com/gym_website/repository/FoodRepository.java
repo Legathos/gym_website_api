@@ -9,5 +9,6 @@ import java.util.List;
 @Repository
 public interface FoodRepository extends JpaRepository<FoodEntity, Long> {
     List<FoodEntity> findAllByNameContainingIgnoreCase(String name);
+    FoodEntity findByBarcode(Long barcode);
 
 }

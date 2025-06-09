@@ -9,6 +9,9 @@
             <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
+            <column name="barcode" type="BIGINT" >
+                <constraints nullable="true"/>
+            </column>
             <column name="name" type="varchar(256)">
                 <constraints nullable="false"/>
             </column>

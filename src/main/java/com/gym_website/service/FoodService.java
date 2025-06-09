@@ -66,4 +66,9 @@ public class FoodService {
         List<FoodEntity> foodEntities = foodRepository.findAllByNameContainingIgnoreCase(name);
         return foodMapper.toDtos(foodEntities);
     }
+
+    public FoodDto getFoodItemByBarcode(Long barcode){
+        FoodEntity foodEntity = foodRepository.findByBarcode(barcode);
+        return foodMapper.toDto(foodEntity);
+    }
 }

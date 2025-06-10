@@ -31,7 +31,8 @@ import java.util.Optional;
 public class JwtTokenService {
     private static final long EXPIRATIONTIME = Duration.ofDays(3).toMillis();
     private static final String HEADER_STRING = "app-auth";
-    private static final String CLAIM_USER = "username";
+    private static final String CLAIM_USERNAME = "username";
+    private static final String CLAIM_USER_ID = "userId";
     private static final String CLAIM_ROLES = "roles";
     @Value("${application.secret}")
     private String secret;
@@ -39,33 +40,48 @@ public class JwtTokenService {
     public Authentication getAuthentication(final HttpServletRequest request) {
         Authentication auth = null;
         final String token = Optional.ofNullable(request.getHeader(HEADER_STRING)).orElse(null);
+
         try {
-            if (token != null && !("").equals(token)) {
-                // parse the token.
-                Jws<Claims> claims;
-                claims = Jwts.parserBuilder().setSigningKey(getSigningKey())
-                        .build()
-                        .parseClaimsJws(token);
-                if (null != claims) {
-                    // Check if there is a userId present
-                    final String userId = Optional
-                            .ofNullable(claims.getBody().get(CLAIM_USER))
-                            .map(Object::toString)
-                            .orElseThrow(
-                                    () -> new AuthenticationCredentialsNotFoundException("No username given in jwt"));
-                    // check roles
-                    String role = Optional
-                            .ofNullable(claims.getBody().get(CLAIM_ROLES))
-                            .map(Object::toString)
-                            .orElseThrow(
-                                    () -> new AuthenticationCredentialsNotFoundException("No roles given in jwt"));
-
-
-                    ArrayList<GrantedAuthority> authorities = new ArrayList<>();
-                    authorities.add(new SimpleGrantedAuthority(role));
-                    auth = new UsernamePasswordAuthenticationToken(userId, null, authorities);
-                }
+            // Check if token exists and is not empty
+            if (token == null || token.isEmpty()) {
+                return null;
             }
+
+            // Parse the token
+            Jws<Claims> claims = Jwts.parserBuilder()
+                    .setSigningKey(getSigningKey())
+                    .build()
+                    .parseClaimsJws(token);
+
+            if (claims == null) {
+                return null;
+            }
+
+            // Extract username
+            final String username = Optional
+                    .ofNullable(claims.getBody().get(CLAIM_USERNAME))
+                    .map(Object::toString)
+                    .orElseThrow(() -> new AuthenticationCredentialsNotFoundException("No username given in jwt"));
+
+            // Extract user ID (may be null for tokens created before this change)
+            final String userId = Optional
+                    .ofNullable(claims.getBody().get(CLAIM_USER_ID))
+                    .map(Object::toString)
+                    .orElse(null);
+
+            // Extract role
+            String role = Optional
+                    .ofNullable(claims.getBody().get(CLAIM_ROLES))
+                    .map(Object::toString)
+                    .orElseThrow(() -> new AuthenticationCredentialsNotFoundException("No roles given in jwt"));
+
+            // Create authorities list
+            ArrayList<GrantedAuthority> authorities = new ArrayList<>();
+            authorities.add(new SimpleGrantedAuthority(role));
+
+            // Use userId as principal if available, otherwise use username
+            String principal = userId != null ? userId : username;
+            auth = new UsernamePasswordAuthenticationToken(principal, null, authorities);
 
         } catch (final MalformedJwtException | UnsupportedJwtException ex) {
             log.error("Unsupported jwt token {} with exception {}",
@@ -91,12 +107,13 @@ public class JwtTokenService {
         return auth;
     }
 
-    public String createJwtToken(final String userId, final EAppRoles role) {
+    public String createJwtToken(final String username, final Long userId, final EAppRoles role) {
         // create the jwt token
         String jwtToken;
 
         jwtToken = Jwts.builder()
-                .claim(CLAIM_USER, userId)
+                .claim(CLAIM_USERNAME, username)
+                .claim(CLAIM_USER_ID, userId)
                 .claim(CLAIM_ROLES, role)
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRATIONTIME))
                 .signWith(getSigningKey())

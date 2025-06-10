@@ -39,7 +39,7 @@ public class UserController {
         String jwt = "";
         UserDto userDto = userService.loginUser(userLoginDto);
         if (userDto != null) {
-            jwt = jwtTokenService.createJwtToken(userLoginDto.getUsername(), LoginUtilService.getRole(userDto));
+            jwt = jwtTokenService.createJwtToken(userDto.getUsername(), userDto.getId(), LoginUtilService.getRole(userDto));
             httpServletResponse.addCookie(LoginUtilService.createJwtCookie(jwt));
             return ResponseEntity.ok().build();
         }

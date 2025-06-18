@@ -42,4 +42,16 @@ public class LoggerController {
     public ResponseEntity deleteLog(@RequestBody LoggerDto loggerDto){
         return ResponseEntity.ok(this.loggerService.deleteLog(loggerDto));
     }
+
+    @GetMapping("sum-macros-for-{user}/{date}")
+    @PreAuthorize("hasAuthority(T(com.gym_website.util.enums.EAppRoles).MEMBER)")
+    public ResponseEntity sumMacrosByUserIdAndDate(@PathVariable("user") Long userId, @PathVariable("date") String date) throws ParseException {
+        return ResponseEntity.ok(this.loggerService.sumMacrosForUserIdAndDate(userId, date));
+    }
+
+    @GetMapping("get-logs-for-{user}/last-{days}-days")
+    @PreAuthorize("hasAuthority(T(com.gym_website.util.enums.EAppRoles).MEMBER)")
+    public ResponseEntity getLogsForUserIdAndDateRange(@PathVariable("user") Long userId, @PathVariable("days") int days) {
+        return ResponseEntity.ok(this.loggerService.getLogsForUserIdAndDateRange(userId, days));
+    }
 }

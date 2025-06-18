@@ -8,7 +8,6 @@ public class SetTrackingDto {
     private Long workout_id;
     private Long exercise_id;
     private Long set_id;
-    private Long set_number;
     private Long reps;
     private Long weight;
 }

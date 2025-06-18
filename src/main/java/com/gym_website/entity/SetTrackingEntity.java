@@ -21,9 +21,6 @@ public class SetTrackingEntity {
     @Column(name = "set_id")
     private Long set_id;
 
-    @Column(name = "set_number")
-    private Long set_number;
-
     @Column(name = "reps")
     private Long reps;
 

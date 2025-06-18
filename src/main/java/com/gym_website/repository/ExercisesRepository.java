@@ -14,4 +14,7 @@ public interface ExercisesRepository extends JpaRepository<ExercisesEntity, Long
 
     @Query("SELECT ee FROM ExercisesEntity ee WHERE ee.category = :category")
     List<ExercisesEntity> findByCategory(@Param("category") String category);
+
+    @Query("SELECT ee FROM ExercisesEntity ee WHERE ee.user_id = :userId")
+    List<ExercisesEntity> findByUserId(@Param("userId") Long userId);
 }

@@ -44,6 +44,11 @@ public class ExercisesService {
         return exercisesMapper.toDtos(exercisesEntities);
     }
 
+    public List<ExercisesDto> getExercisesByUserId (Long userId){
+        List<ExercisesEntity> exercisesEntities = exercisesRepository.findByUserId(userId);
+        return exercisesMapper.toDtos(exercisesEntities);
+    }
+
 
     public ResponseDto deleteExercise(Long id){
         ResponseDto responseDto = new ResponseDto();
@@ -61,6 +66,7 @@ public class ExercisesService {
         exercisesEntity.setName(exercisesDto.getName());
         exercisesEntity.setCategory(exercisesDto.getCategory());
         exercisesEntity.setDescription(exercisesDto.getDescription());
+        exercisesEntity.setUser_id(exercisesDto.getUser_id());
         exercisesRepository.save(exercisesEntity);
         ResponseDto responseDto = new ResponseDto();
         responseDto.setSuccessMessage("Exercise modified");

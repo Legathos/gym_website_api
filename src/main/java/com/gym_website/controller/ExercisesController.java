@@ -41,6 +41,12 @@ public class ExercisesController {
         return ResponseEntity.ok(exercisesService.gelExercisesByCategory(String.valueOf(category)));
     }
 
+    @GetMapping("get-exercises-by-user-{userId}")
+    @PreAuthorize("hasAuthority(T(com.gym_website.util.enums.EAppRoles).MEMBER)")
+    public ResponseEntity getExercisesByUserId(@PathVariable("userId")Long userId){
+        return ResponseEntity.ok(exercisesService.getExercisesByUserId(userId));
+    }
+
     @DeleteMapping("delete-exercise-{id}")
     @PreAuthorize("hasAuthority(T(com.gym_website.util.enums.EAppRoles).MEMBER)")
     public ResponseEntity deleteById(@PathVariable("id")Long id){

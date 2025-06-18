@@ -12,6 +12,9 @@ public class ExercisesEntity {
     @SequenceGenerator(name = "exercises_id_seq", sequenceName = "exercises_id_seq",allocationSize = 1)
     private Long id;
 
+    @Column(name = "user_id")
+    private Long user_id;
+
     @Column(name = "name")
     private String name;
 

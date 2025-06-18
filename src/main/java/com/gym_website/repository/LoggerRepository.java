@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public interface LoggerRepository extends JpaRepository<LoggerEntity, Long> {
@@ -15,4 +16,9 @@ public interface LoggerRepository extends JpaRepository<LoggerEntity, Long> {
     @Query("SELECT le FROM LoggerEntity le WHERE le.user_id = :userId and le.date = :date")
     List<LoggerEntity> findByUserIdAndDate(@Param("userId") Long userId, @Param("date") Date date);
 
+    @Query("SELECT le FROM LoggerEntity le WHERE le.user_id = :userId and le.date BETWEEN :startDate AND :endDate ORDER BY le.date DESC")
+    List<LoggerEntity> findByUserIdAndDateBetween(@Param("userId") Long userId, @Param("startDate") Date startDate, @Param("endDate") Date endDate);
+
+    @Query("SELECT SUM(le.calories) as calories, SUM(le.carbs) as carbs, SUM(le.fats) as fats, SUM(le.protein) as protein FROM LoggerEntity le WHERE le.user_id = :userId and le.date = :date")
+    Map<String, Object> sumMacrosByUserIdAndDate(@Param("userId") Long userId, @Param("date") Date date);
 }

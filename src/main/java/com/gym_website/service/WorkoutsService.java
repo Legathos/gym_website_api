@@ -23,8 +23,9 @@ public class WorkoutsService {
     public ResponseDto addWorkout(WorkoutsDto workoutsDto){
         ResponseDto responseDto = new ResponseDto();
         WorkoutsEntity workoutsEntity = workoutsMapper.toEntity(workoutsDto);
-        workoutsRepository.save(workoutsEntity);
+        workoutsEntity = workoutsRepository.save(workoutsEntity);
         responseDto.setSuccessMessage("Workout added");
+        responseDto.setId(workoutsEntity.getId());
         return responseDto;
     }
 
@@ -43,6 +44,14 @@ public class WorkoutsService {
         return  workoutsMapper.toDtos(workoutsEntities);
     }
 
+    public WorkoutsDto getLatestWorkoutByUserId(Long userId) {
+        List<WorkoutsEntity> workoutsEntities = workoutsRepository.findByUserIdOrderByDateDesc(userId);
+        if (workoutsEntities.isEmpty()) {
+            return null;
+        }
+        return workoutsMapper.toDto(workoutsEntities.get(0));
+    }
+
     public ResponseDto editWorkout (WorkoutsDto workoutsDto){
         ResponseDto responseDto = new ResponseDto();
         WorkoutsEntity workoutsEntity = new WorkoutsEntity();
@@ -50,7 +59,6 @@ public class WorkoutsService {
         workoutsEntity.setDate(workoutsDto.getDate());
         workoutsEntity.setUser_id(workoutsDto.getUser_id());
         workoutsEntity.setName(workoutsDto.getName());
-        workoutsEntity.setTotal_time(workoutsDto.getTotal_time());
         workoutsEntity.setTotal_weight(workoutsDto.getTotal_weight());
         workoutsRepository.save(workoutsEntity);
         responseDto.setSuccessMessage("Workout edited");
@@ -79,4 +87,3 @@ public class WorkoutsService {
 
 
 }
-

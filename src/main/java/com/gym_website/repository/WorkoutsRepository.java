@@ -8,10 +8,14 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface WorkoutsRepository extends JpaRepository<WorkoutsEntity, Long> {
 
     @Query("SELECT w FROM WorkoutsEntity w WHERE w.user_id = :userId")
     List<WorkoutsEntity> findByUserId(@Param("userId") Long userId);
+
+    @Query("SELECT w FROM WorkoutsEntity w WHERE w.user_id = :userId ORDER BY w.date DESC")
+    List<WorkoutsEntity> findByUserIdOrderByDateDesc(@Param("userId") Long userId);
 }

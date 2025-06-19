@@ -6,4 +6,5 @@ import lombok.Data;
 public class ResponseDto {
     private String successMessage;
     private String errorMessage;
+    private Long id;
 }

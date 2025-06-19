@@ -8,8 +8,7 @@ import lombok.Data;
 @Table(name = "set_tracking")
 public class SetTrackingEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "workouts_id_seq")
-    @SequenceGenerator(name = "workouts_id_seq", sequenceName = "workouts_id_seq",allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "workout_id")

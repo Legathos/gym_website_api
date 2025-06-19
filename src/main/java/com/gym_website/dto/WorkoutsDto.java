@@ -11,6 +11,5 @@ public class WorkoutsDto {
     private String name;
     private Date date;
     private Long total_weight;
-    private Long total_time;
     private String status;
 }

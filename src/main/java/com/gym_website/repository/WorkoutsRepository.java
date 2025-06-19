@@ -1,6 +1,5 @@
 package com.gym_website.repository;
 
-import com.gym_website.entity.UserWeightEntity;
 import com.gym_website.entity.WorkoutsEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -14,4 +13,7 @@ public interface WorkoutsRepository extends JpaRepository<WorkoutsEntity, Long> 
 
     @Query("SELECT w FROM WorkoutsEntity w WHERE w.user_id = :userId")
     List<WorkoutsEntity> findByUserId(@Param("userId") Long userId);
+
+    @Query("SELECT w FROM WorkoutsEntity w WHERE w.user_id = :userId ORDER BY w.date DESC")
+    List<WorkoutsEntity> findByUserIdOrderByDateDesc(@Param("userId") Long userId);
 }

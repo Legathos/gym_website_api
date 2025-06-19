@@ -41,6 +41,12 @@ public class WorkoutsController {
         return ResponseEntity.ok(workoutsService.getAllWorkoutsByUserId(id));
     }
 
+    @GetMapping("get-latest-workout-by-userid-{id}")
+    @PreAuthorize("hasAuthority(T(com.gym_website.util.enums.EAppRoles).MEMBER)")
+    public ResponseEntity getLatestWorkoutByUserId(@PathVariable("id")Long id){
+        return ResponseEntity.ok(workoutsService.getLatestWorkoutByUserId(id));
+    }
+
     @PutMapping("edit-workout")
     @PreAuthorize("hasAuthority(T(com.gym_website.util.enums.EAppRoles).MEMBER)")
     public ResponseEntity editWorkout(@RequestBody WorkoutsDto workoutsDto){

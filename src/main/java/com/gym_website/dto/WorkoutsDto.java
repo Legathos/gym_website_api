@@ -12,4 +12,5 @@ public class WorkoutsDto {
     private Date date;
     private Long total_weight;
     private Long total_time;
+    private String status;
 }

@@ -17,4 +17,5 @@
     <include file="liquibase/15122023-add_achievements.xml"/>
     <include file="liquibase/19122023-added-food.xml"/>
     <include file="liquibase/20240301-add_user_id_to_exercises.xml"/>
+    <include file="liquibase/20240501-add_status_to_workout.xml"/>
 </databaseChangeLog>

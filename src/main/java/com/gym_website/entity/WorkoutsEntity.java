@@ -29,4 +29,6 @@ public class WorkoutsEntity {
     @Column(name = "total_time")
     private Long total_time;
 
+    @Column(name = "status")
+    private String status;
 }

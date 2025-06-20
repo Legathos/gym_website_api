@@ -59,5 +59,18 @@ public class WorkoutsController {
         return ResponseEntity.ok(workoutsService.deleteWorkout(id));
     }
 
-
+    @GetMapping("get-monthly-workouts")
+    @PreAuthorize("hasAuthority(T(com.gym_website.util.enums.EAppRoles).MEMBER)")
+    public ResponseEntity getMonthlyWorkouts(
+            @RequestParam("userId") Long userId,
+            @RequestParam("year") String yearStr,
+            @RequestParam("month") String monthStr) {
+        try {
+            int year = Integer.parseInt(yearStr);
+            int month = Integer.parseInt(monthStr);
+            return ResponseEntity.ok(workoutsService.getWorkoutsByMonth(userId, year, month));
+        } catch (NumberFormatException e) {
+            return ResponseEntity.badRequest().body("Invalid year or month format. Please provide numeric values.");
+        }
+    }
 }

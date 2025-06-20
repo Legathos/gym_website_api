@@ -1,5 +1,6 @@
 package com.gym_website.service;
 
+import com.gym_website.dto.MonthlyWorkoutsDto;
 import com.gym_website.dto.ResponseDto;
 import com.gym_website.dto.WorkoutsDto;
 import com.gym_website.entity.WorkoutsEntity;
@@ -7,7 +8,8 @@ import com.gym_website.mapper.WorkoutsMapper;
 import com.gym_website.repository.WorkoutsRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.*;
+import java.util.Calendar;
 
 @Service
 public class WorkoutsService {
@@ -74,6 +76,50 @@ public class WorkoutsService {
         }
         responseDto.setErrorMessage("Workout not found");
         return responseDto;
+    }
+
+    public MonthlyWorkoutsDto getWorkoutsByMonth(Long userId, int year, int month) {
+        // Create calendar for start of month
+        Calendar startCalendar = Calendar.getInstance();
+        startCalendar.set(year, month - 1, 1, 0, 0, 0); // Month is 0-based in Calendar
+        startCalendar.set(Calendar.MILLISECOND, 0);
+        Date startDate = startCalendar.getTime();
+
+        // Create calendar for end of month (start of next month)
+        Calendar endCalendar = Calendar.getInstance();
+        endCalendar.set(year, month, 1, 0, 0, 0); // Next month
+        endCalendar.set(Calendar.MILLISECOND, 0);
+        Date endDate = endCalendar.getTime();
+
+        // Get workouts for the month
+        List<WorkoutsEntity> workoutsEntities = workoutsRepository.findByUserIdAndMonth(userId, startDate, endDate);
+        List<WorkoutsDto> workoutsDtos = workoutsMapper.toDtos(workoutsEntities);
+
+        // Create map of day of month to workout
+        Map<Integer, WorkoutsDto> dailyWorkouts = new HashMap<>();
+
+        // Initialize all days of the month with null
+        int daysInMonth = startCalendar.getActualMaximum(Calendar.DAY_OF_MONTH);
+        for (int day = 1; day <= daysInMonth; day++) {
+            dailyWorkouts.put(day, null);
+        }
+
+        // Fill in workouts where they exist
+        for (WorkoutsDto workout : workoutsDtos) {
+            Calendar workoutCalendar = Calendar.getInstance();
+            workoutCalendar.setTime(workout.getDate());
+            int dayOfMonth = workoutCalendar.get(Calendar.DAY_OF_MONTH);
+            dailyWorkouts.put(dayOfMonth, workout);
+        }
+
+        // Create and return the response DTO
+        MonthlyWorkoutsDto monthlyWorkoutsDto = new MonthlyWorkoutsDto();
+        monthlyWorkoutsDto.setUserId(userId);
+        monthlyWorkoutsDto.setYear(year);
+        monthlyWorkoutsDto.setMonth(month);
+        monthlyWorkoutsDto.setDailyWorkouts(dailyWorkouts);
+
+        return monthlyWorkoutsDto;
     }
 
 

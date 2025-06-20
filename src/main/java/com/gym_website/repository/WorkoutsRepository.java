@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -16,4 +17,7 @@ public interface WorkoutsRepository extends JpaRepository<WorkoutsEntity, Long> 
 
     @Query("SELECT w FROM WorkoutsEntity w WHERE w.user_id = :userId ORDER BY w.date DESC")
     List<WorkoutsEntity> findByUserIdOrderByDateDesc(@Param("userId") Long userId);
+
+    @Query("SELECT w FROM WorkoutsEntity w WHERE w.user_id = :userId AND w.date >= :startDate AND w.date < :endDate ORDER BY w.date")
+    List<WorkoutsEntity> findByUserIdAndMonth(@Param("userId") Long userId, @Param("startDate") Date startDate, @Param("endDate") Date endDate);
 }

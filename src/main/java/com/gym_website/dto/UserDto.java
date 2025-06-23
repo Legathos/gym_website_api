@@ -11,4 +11,5 @@ public class UserDto {
     private Long weight;
     private Long height;
     private String gender;
+    private String email;
 }

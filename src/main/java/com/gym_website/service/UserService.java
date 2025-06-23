@@ -103,6 +103,7 @@ public class UserService {
         toEdit.setWeight(userDto.getWeight());
         toEdit.setPassword(passwordEncoder.encode(userDto.getPassword()));
         toEdit.setUsername(userDto.getUsername());
+        toEdit.setEmail(userDto.getEmail());
 
         userRepository.save(toEdit);
 

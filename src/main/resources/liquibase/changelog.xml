@@ -20,4 +20,5 @@
     <include file="liquibase/20240501-add_status_to_workout.xml"/>
     <include file="liquibase/20240601-remove_total_time_from_workout.xml"/>
     <include file="liquibase/20240602-fix_exercise_id_fk.xml"/>
+    <include file="liquibase/20240701-add_email_to_user.xml"/>
 </databaseChangeLog>

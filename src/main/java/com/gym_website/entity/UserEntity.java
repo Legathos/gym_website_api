@@ -31,4 +31,7 @@ public class UserEntity {
 
     @Column(name = "gender")
     private String gender;
+
+    @Column(name = "email")
+    private String email;
 }

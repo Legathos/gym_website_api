@@ -1,0 +1,556 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
+    <changeSet id="add-food-logs-for-user-12-june" author="system">
+        <!-- June 1, 2024 -->
+        <insert tableName="logger">
+            <column name="user_id" value="12"/>
+            <column name="date" value="2024-06-01"/>
+            <column name="food_id" value="1"/>
+            <column name="food_name" value="Chicken Breast"/>
+            <column name="meal" value="1"/>
+            <column name="weight" value="200"/>
+            <column name="calories" value="330"/>
+            <column name="carbs" value="0"/>
+            <column name="fats" value="7.2"/>
+            <column name="protein" value="62"/>
+        </insert>
+        <insert tableName="logger">
+            <column name="user_id" value="12"/>
+            <column name="date" value="2024-06-01"/>
+            <column name="food_id" value="4"/>
+            <column name="food_name" value="Brown Rice"/>
+            <column name="meal" value="1"/>
+            <column name="weight" value="300"/>
+            <column name="calories" value="333"/>
+            <column name="carbs" value="69"/>
+            <column name="fats" value="2.7"/>
+            <column name="protein" value="7.8"/>
+        </insert>
+        <insert tableName="logger">
+            <column name="user_id" value="12"/>
+            <column name="date" value="2024-06-01"/>
+            <column name="food_id" value="3"/>
+            <column name="food_name" value="Broccoli"/>
+            <column name="meal" value="1"/>
+            <column name="weight" value="150"/>
+            <column name="calories" value="82.5"/>
+            <column name="carbs" value="16.5"/>
+            <column name="fats" value="0.9"/>
+            <column name="protein" value="5.55"/>
+        </insert>
+        <insert tableName="logger">
+            <column name="user_id" value="12"/>
+            <column name="date" value="2024-06-01"/>
+            <column name="food_id" value="2"/>
+            <column name="food_name" value="Salmon"/>
+            <column name="meal" value="2"/>
+            <column name="weight" value="200"/>
+            <column name="calories" value="412"/>
+            <column name="carbs" value="0"/>
+            <column name="fats" value="26.8"/>
+            <column name="protein" value="44"/>
+        </insert>
+        <insert tableName="logger">
+            <column name="user_id" value="12"/>
+            <column name="date" value="2024-06-01"/>
+            <column name="food_id" value="5"/>
+            <column name="food_name" value="Sweet Potato"/>
+            <column name="meal" value="2"/>
+            <column name="weight" value="250"/>
+            <column name="calories" value="215"/>
+            <column name="carbs" value="50"/>
+            <column name="fats" value="0.25"/>
+            <column name="protein" value="4"/>
+        </insert>
+        <insert tableName="logger">
+            <column name="user_id" value="12"/>
+            <column name="date" value="2024-06-01"/>
+            <column name="food_id" value="7"/>
+            <column name="food_name" value="Spinach"/>
+            <column name="meal" value="2"/>
+            <column name="weight" value="100"/>
+            <column name="calories" value="23"/>
+            <column name="carbs" value="3.6"/>
+            <column name="fats" value="0.4"/>
+            <column name="protein" value="2.9"/>
+        </insert>
+        <insert tableName="logger">
+            <column name="user_id" value="12"/>
+            <column name="date" value="2024-06-01"/>
+            <column name="food_id" value="10"/>
+            <column name="food_name" value="Greek Yogurt"/>
+            <column name="meal" value="3"/>
+            <column name="weight" value="200"/>
+            <column name="calories" value="118"/>
+            <column name="carbs" value="7.2"/>
+            <column name="fats" value="6.6"/>
+            <column name="protein" value="20"/>
+        </insert>
+        <insert tableName="logger">
+            <column name="user_id" value="12"/>
+            <column name="date" value="2024-06-01"/>
+            <column name="food_id" value="13"/>
+            <column name="food_name" value="Banana"/>
+            <column name="meal" value="3"/>
+            <column name="weight" value="120"/>
+            <column name="calories" value="126"/>
+            <column name="carbs" value="32.4"/>
+            <column name="fats" value="0.36"/>
+            <column name="protein" value="1.56"/>
+        </insert>
+        <insert tableName="logger">
+            <column name="user_id" value="12"/>
+            <column name="date" value="2024-06-01"/>
+            <column name="food_id" value="11"/>
+            <column name="food_name" value="Almonds"/>
+            <column name="meal" value="3"/>
+            <column name="weight" value="30"/>
+            <column name="calories" value="172.8"/>
+            <column name="carbs" value="6.3"/>
+            <column name="fats" value="14.7"/>
+            <column name="protein" value="6.3"/>
+        </insert>
+
+        <!-- June 2, 2025 -->
+        <insert tableName="logger">
+            <column name="user_id" value="12"/>
+            <column name="date" value="2025-06-02"/>
+            <column name="food_id" value="8"/>
+            <column name="food_name" value="Eggs"/>
+            <column name="meal" value="1"/>
+            <column name="weight" value="200"/>
+            <column name="calories" value="310"/>
+            <column name="carbs" value="2.2"/>
+            <column name="fats" value="21.2"/>
+            <column name="protein" value="25.2"/>
+        </insert>
+        <insert tableName="logger">
+            <column name="user_id" value="12"/>
+            <column name="date" value="2025-06-02"/>
+            <column name="food_id" value="12"/>
+            <column name="food_name" value="Oatmeal"/>
+            <column name="meal" value="1"/>
+            <column name="weight" value="150"/>
+            <column name="calories" value="102"/>
+            <column name="carbs" value="18"/>
+            <column name="fats" value="2.1"/>
+            <column name="protein" value="3.6"/>
+        </insert>
+        <insert tableName="logger">
+            <column name="user_id" value="12"/>
+            <column name="date" value="2025-06-02"/>
+            <column name="food_id" value="13"/>
+            <column name="food_name" value="Banana"/>
+            <column name="meal" value="1"/>
+            <column name="weight" value="100"/>
+            <column name="calories" value="105"/>
+            <column name="carbs" value="27"/>
+            <column name="fats" value="0.3"/>
+            <column name="protein" value="1.3"/>
+        </insert>
+        <insert tableName="logger">
+            <column name="user_id" value="12"/>
+            <column name="date" value="2025-06-02"/>
+            <column name="food_id" value="15"/>
+            <column name="food_name" value="Tuna"/>
+            <column name="meal" value="2"/>
+            <column name="weight" value="150"/>
+            <column name="calories" value="195"/>
+            <column name="carbs" value="0"/>
+            <column name="fats" value="1.5"/>
+            <column name="protein" value="45"/>
+        </insert>
+        <insert tableName="logger">
+            <column name="user_id" value="12"/>
+            <column name="date" value="2025-06-02"/>
+            <column name="food_id" value="4"/>
+            <column name="food_name" value="Brown Rice"/>
+            <column name="meal" value="2"/>
+            <column name="weight" value="250"/>
+            <column name="calories" value="277.5"/>
+            <column name="carbs" value="57.5"/>
+            <column name="fats" value="2.25"/>
+            <column name="protein" value="6.5"/>
+        </insert>
+        <insert tableName="logger">
+            <column name="user_id" value="12"/>
+            <column name="date" value="2025-06-02"/>
+            <column name="food_id" value="6"/>
+            <column name="food_name" value="Avocado"/>
+            <column name="meal" value="2"/>
+            <column name="weight" value="100"/>
+            <column name="calories" value="160"/>
+            <column name="carbs" value="9"/>
+            <column name="fats" value="15"/>
+            <column name="protein" value="2"/>
+        </insert>
+        <insert tableName="logger">
+            <column name="user_id" value="12"/>
+            <column name="date" value="2025-06-02"/>
+            <column name="food_id" value="17"/>
+            <column name="food_name" value="Beef Steak"/>
+            <column name="meal" value="3"/>
+            <column name="weight" value="250"/>
+            <column name="calories" value="625"/>
+            <column name="carbs" value="0"/>
+            <column name="fats" value="65"/>
+            <column name="protein" value="65"/>
+        </insert>
+        <insert tableName="logger">
+            <column name="user_id" value="12"/>
+            <column name="date" value="2025-06-02"/>
+            <column name="food_id" value="5"/>
+            <column name="food_name" value="Sweet Potato"/>
+            <column name="meal" value="3"/>
+            <column name="weight" value="200"/>
+            <column name="calories" value="172"/>
+            <column name="carbs" value="40"/>
+            <column name="fats" value="0.2"/>
+            <column name="protein" value="3.2"/>
+        </insert>
+        <insert tableName="logger">
+            <column name="user_id" value="12"/>
+            <column name="date" value="2025-06-02"/>
+            <column name="food_id" value="3"/>
+            <column name="food_name" value="Broccoli"/>
+            <column name="meal" value="3"/>
+            <column name="weight" value="150"/>
+            <column name="calories" value="82.5"/>
+            <column name="carbs" value="16.5"/>
+            <column name="fats" value="0.9"/>
+            <column name="protein" value="5.55"/>
+        </insert>
+
+        <!-- June 3, 2025 -->
+        <insert tableName="logger">
+            <column name="user_id" value="12"/>
+            <column name="date" value="2025-06-03"/>
+            <column name="food_id" value="19"/>
+            <column name="food_name" value="Protein Shake"/>
+            <column name="meal" value="1"/>
+            <column name="weight" value="200"/>
+            <column name="calories" value="240"/>
+            <column name="carbs" value="6"/>
+            <column name="fats" value="4"/>
+            <column name="protein" value="48"/>
+        </insert>
+        <insert tableName="logger">
+            <column name="user_id" value="12"/>
+            <column name="date" value="2025-06-03"/>
+            <column name="food_id" value="12"/>
+            <column name="food_name" value="Oatmeal"/>
+            <column name="meal" value="1"/>
+            <column name="weight" value="200"/>
+            <column name="calories" value="136"/>
+            <column name="carbs" value="24"/>
+            <column name="fats" value="2.8"/>
+            <column name="protein" value="4.8"/>
+        </insert>
+        <insert tableName="logger">
+            <column name="user_id" value="12"/>
+            <column name="date" value="2025-06-03"/>
+            <column name="food_id" value="18"/>
+            <column name="food_name" value="Blueberries"/>
+            <column name="meal" value="1"/>
+            <column name="weight" value="100"/>
+            <column name="calories" value="57"/>
+            <column name="carbs" value="14"/>
+            <column name="fats" value="0.3"/>
+            <column name="protein" value="0.7"/>
+        </insert>
+        <insert tableName="logger">
+            <column name="user_id" value="12"/>
+            <column name="date" value="2025-06-03"/>
+            <column name="food_id" value="1"/>
+            <column name="food_name" value="Chicken Breast"/>
+            <column name="meal" value="2"/>
+            <column name="weight" value="250"/>
+            <column name="calories" value="412.5"/>
+            <column name="carbs" value="0"/>
+            <column name="fats" value="9"/>
+            <column name="protein" value="77.5"/>
+        </insert>
+        <insert tableName="logger">
+            <column name="user_id" value="12"/>
+            <column name="date" value="2025-06-03"/>
+            <column name="food_id" value="9"/>
+            <column name="food_name" value="Quinoa"/>
+            <column name="meal" value="2"/>
+            <column name="weight" value="200"/>
+            <column name="calories" value="240"/>
+            <column name="carbs" value="42"/>
+            <column name="fats" value="3.8"/>
+            <column name="protein" value="8"/>
+        </insert>
+        <insert tableName="logger">
+            <column name="user_id" value="12"/>
+            <column name="date" value="2025-06-03"/>
+            <column name="food_id" value="16"/>
+            <column name="food_name" value="Carrot"/>
+            <column name="meal" value="2"/>
+            <column name="weight" value="150"/>
+            <column name="calories" value="61.5"/>
+            <column name="carbs" value="15"/>
+            <column name="fats" value="0.3"/>
+            <column name="protein" value="1.35"/>
+        </insert>
+        <insert tableName="logger">
+            <column name="user_id" value="12"/>
+            <column name="date" value="2025-06-03"/>
+            <column name="food_id" value="2"/>
+            <column name="food_name" value="Salmon"/>
+            <column name="meal" value="3"/>
+            <column name="weight" value="200"/>
+            <column name="calories" value="412"/>
+            <column name="carbs" value="0"/>
+            <column name="fats" value="26.8"/>
+            <column name="protein" value="44"/>
+        </insert>
+        <insert tableName="logger">
+            <column name="user_id" value="12"/>
+            <column name="date" value="2025-06-03"/>
+            <column name="food_id" value="5"/>
+            <column name="food_name" value="Sweet Potato"/>
+            <column name="meal" value="3"/>
+            <column name="weight" value="200"/>
+            <column name="calories" value="172"/>
+            <column name="carbs" value="40"/>
+            <column name="fats" value="0.2"/>
+            <column name="protein" value="3.2"/>
+        </insert>
+        <insert tableName="logger">
+            <column name="user_id" value="12"/>
+            <column name="date" value="2025-06-03"/>
+            <column name="food_id" value="7"/>
+            <column name="food_name" value="Spinach"/>
+            <column name="meal" value="3"/>
+            <column name="weight" value="150"/>
+            <column name="calories" value="34.5"/>
+            <column name="carbs" value="5.4"/>
+            <column name="fats" value="0.6"/>
+            <column name="protein" value="4.35"/>
+        </insert>
+
+        <!-- June 4, 2025 -->
+        <insert tableName="logger">
+            <column name="user_id" value="12"/>
+            <column name="date" value="2025-06-04"/>
+            <column name="food_id" value="8"/>
+            <column name="food_name" value="Eggs"/>
+            <column name="meal" value="1"/>
+            <column name="weight" value="150"/>
+            <column name="calories" value="232.5"/>
+            <column name="carbs" value="1.65"/>
+            <column name="fats" value="15.9"/>
+            <column name="protein" value="18.9"/>
+        </insert>
+        <insert tableName="logger">
+            <column name="user_id" value="12"/>
+            <column name="date" value="2025-06-04"/>
+            <column name="food_id" value="6"/>
+            <column name="food_name" value="Avocado"/>
+            <column name="meal" value="1"/>
+            <column name="weight" value="50"/>
+            <column name="calories" value="80"/>
+            <column name="carbs" value="4.5"/>
+            <column name="fats" value="7.5"/>
+            <column name="protein" value="1"/>
+        </insert>
+        <insert tableName="logger">
+            <column name="user_id" value="12"/>
+            <column name="date" value="2025-06-04"/>
+            <column name="food_id" value="21"/>
+            <column name="food_name" value="Whole Wheat Bread"/>
+            <column name="meal" value="1"/>
+            <column name="weight" value="100"/>
+            <column name="calories" value="247"/>
+            <column name="carbs" value="41"/>
+            <column name="fats" value="3.4"/>
+            <column name="protein" value="13"/>
+        </insert>
+        <insert tableName="logger">
+            <column name="user_id" value="12"/>
+            <column name="date" value="2025-06-04"/>
+            <column name="food_id" value="1"/>
+            <column name="food_name" value="Chicken Breast"/>
+            <column name="meal" value="2"/>
+            <column name="weight" value="200"/>
+            <column name="calories" value="330"/>
+            <column name="carbs" value="0"/>
+            <column name="fats" value="7.2"/>
+            <column name="protein" value="62"/>
+        </insert>
+        <insert tableName="logger">
+            <column name="user_id" value="12"/>
+            <column name="date" value="2025-06-04"/>
+            <column name="food_id" value="4"/>
+            <column name="food_name" value="Brown Rice"/>
+            <column name="meal" value="2"/>
+            <column name="weight" value="200"/>
+            <column name="calories" value="222"/>
+            <column name="carbs" value="46"/>
+            <column name="fats" value="1.8"/>
+            <column name="protein" value="5.2"/>
+        </insert>
+        <insert tableName="logger">
+            <column name="user_id" value="12"/>
+            <column name="date" value="2025-06-04"/>
+            <column name="food_id" value="3"/>
+            <column name="food_name" value="Broccoli"/>
+            <column name="meal" value="2"/>
+            <column name="weight" value="150"/>
+            <column name="calories" value="82.5"/>
+            <column name="carbs" value="16.5"/>
+            <column name="fats" value="0.9"/>
+            <column name="protein" value="5.55"/>
+        </insert>
+        <insert tableName="logger">
+            <column name="user_id" value="12"/>
+            <column name="date" value="2025-06-04"/>
+            <column name="food_id" value="2"/>
+            <column name="food_name" value="Salmon"/>
+            <column name="meal" value="3"/>
+            <column name="weight" value="250"/>
+            <column name="calories" value="515"/>
+            <column name="carbs" value="0"/>
+            <column name="fats" value="33.5"/>
+            <column name="protein" value="55"/>
+        </insert>
+        <insert tableName="logger">
+            <column name="user_id" value="12"/>
+            <column name="date" value="2025-06-04"/>
+            <column name="food_id" value="5"/>
+            <column name="food_name" value="Sweet Potato"/>
+            <column name="meal" value="3"/>
+            <column name="weight" value="200"/>
+            <column name="calories" value="172"/>
+            <column name="carbs" value="40"/>
+            <column name="fats" value="0.2"/>
+            <column name="protein" value="3.2"/>
+        </insert>
+        <insert tableName="logger">
+            <column name="user_id" value="12"/>
+            <column name="date" value="2025-06-04"/>
+            <column name="food_id" value="7"/>
+            <column name="food_name" value="Spinach"/>
+            <column name="meal" value="3"/>
+            <column name="weight" value="100"/>
+            <column name="calories" value="23"/>
+            <column name="carbs" value="3.6"/>
+            <column name="fats" value="0.4"/>
+            <column name="protein" value="2.9"/>
+        </insert>
+
+        <!-- June 5, 2025 -->
+        <insert tableName="logger">
+            <column name="user_id" value="12"/>
+            <column name="date" value="2025-06-05"/>
+            <column name="food_id" value="19"/>
+            <column name="food_name" value="Protein Shake"/>
+            <column name="meal" value="1"/>
+            <column name="weight" value="200"/>
+            <column name="calories" value="240"/>
+            <column name="carbs" value="6"/>
+            <column name="fats" value="4"/>
+            <column name="protein" value="48"/>
+        </insert>
+        <insert tableName="logger">
+            <column name="user_id" value="12"/>
+            <column name="date" value="2025-06-05"/>
+            <column name="food_id" value="13"/>
+            <column name="food_name" value="Banana"/>
+            <column name="meal" value="1"/>
+            <column name="weight" value="120"/>
+            <column name="calories" value="126"/>
+            <column name="carbs" value="32.4"/>
+            <column name="fats" value="0.36"/>
+            <column name="protein" value="1.56"/>
+        </insert>
+        <insert tableName="logger">
+            <column name="user_id" value="12"/>
+            <column name="date" value="2025-06-05"/>
+            <column name="food_id" value="20"/>
+            <column name="food_name" value="Peanut Butter"/>
+            <column name="meal" value="1"/>
+            <column name="weight" value="30"/>
+            <column name="calories" value="176.4"/>
+            <column name="carbs" value="6"/>
+            <column name="fats" value="15"/>
+            <column name="protein" value="7.5"/>
+        </insert>
+        <insert tableName="logger">
+            <column name="user_id" value="12"/>
+            <column name="date" value="2025-06-05"/>
+            <column name="food_id" value="22"/>
+            <column name="food_name" value="Turkey Breast"/>
+            <column name="meal" value="2"/>
+            <column name="weight" value="200"/>
+            <column name="calories" value="208"/>
+            <column name="carbs" value="0"/>
+            <column name="fats" value="1.4"/>
+            <column name="protein" value="48"/>
+        </insert>
+        <insert tableName="logger">
+            <column name="user_id" value="12"/>
+            <column name="date" value="2025-06-05"/>
+            <column name="food_id" value="5"/>
+            <column name="food_name" value="Sweet Potato"/>
+            <column name="meal" value="2"/>
+            <column name="weight" value="250"/>
+            <column name="calories" value="215"/>
+            <column name="carbs" value="50"/>
+            <column name="fats" value="0.25"/>
+            <column name="protein" value="4"/>
+        </insert>
+        <insert tableName="logger">
+            <column name="user_id" value="12"/>
+            <column name="date" value="2025-06-05"/>
+            <column name="food_id" value="3"/>
+            <column name="food_name" value="Broccoli"/>
+            <column name="meal" value="2"/>
+            <column name="weight" value="150"/>
+            <column name="calories" value="82.5"/>
+            <column name="carbs" value="16.5"/>
+            <column name="fats" value="0.9"/>
+            <column name="protein" value="5.55"/>
+        </insert>
+        <insert tableName="logger">
+            <column name="user_id" value="12"/>
+            <column name="date" value="2025-06-05"/>
+            <column name="food_id" value="17"/>
+            <column name="food_name" value="Beef Steak"/>
+            <column name="meal" value="3"/>
+            <column name="weight" value="200"/>
+            <column name="calories" value="500"/>
+            <column name="carbs" value="0"/>
+            <column name="fats" value="52"/>
+            <column name="protein" value="52"/>
+        </insert>
+        <insert tableName="logger">
+            <column name="user_id" value="12"/>
+            <column name="date" value="2025-06-05"/>
+            <column name="food_id" value="9"/>
+            <column name="food_name" value="Quinoa"/>
+            <column name="meal" value="3"/>
+            <column name="weight" value="200"/>
+            <column name="calories" value="240"/>
+            <column name="carbs" value="42"/>
+            <column name="fats" value="3.8"/>
+            <column name="protein" value="8"/>
+        </insert>
+        <insert tableName="logger">
+            <column name="user_id" value="12"/>
+            <column name="date" value="2025-06-05"/>
+            <column name="food_id" value="7"/>
+            <column name="food_name" value="Spinach"/>
+            <column name="meal" value="3"/>
+            <column name="weight" value="100"/>
+            <column name="calories" value="23"/>
+            <column name="carbs" value="3.6"/>
+            <column name="fats" value="0.4"/>
+            <column name="protein" value="2.9"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

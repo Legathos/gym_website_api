@@ -21,4 +21,8 @@
     <include file="liquibase/20240601-remove_total_time_from_workout.xml"/>
     <include file="liquibase/20240602-fix_exercise_id_fk.xml"/>
     <include file="liquibase/20240701-add_email_to_user.xml"/>
+    <include file="liquibase/20240702-add-food-for-user-12.xml"/>
+<!--    <include file="liquibase/20240703-add-food-logs-for-user-12-june.xml"/>-->
+    <include file="liquibase/20240703-add-food-logs-for-user-12-june-2025.xml"/>
+    <include file="liquibase/20240703-add-food-logs-for-user-12-june-2025-forreal.xml"/>
 </databaseChangeLog>

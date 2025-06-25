@@ -1,0 +1,53 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd
+      http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.5.xsd">
+    <changeSet id="add-food-for-user-12" author="system">
+        <insert tableName="food">
+            <column name="name" value="Protein Shake"/>
+            <column name="weight" value="100"/>
+            <column name="calories" value="120"/>
+            <column name="carbs" value="3"/>
+            <column name="fats" value="2"/>
+            <column name="protein" value="24"/>
+        </insert>
+
+        <insert tableName="food">
+            <column name="name" value="Peanut Butter"/>
+            <column name="weight" value="100"/>
+            <column name="calories" value="588"/>
+            <column name="carbs" value="20"/>
+            <column name="fats" value="50"/>
+            <column name="protein" value="25"/>
+        </insert>
+
+        <insert tableName="food">
+            <column name="name" value="Whole Wheat Bread"/>
+            <column name="weight" value="100"/>
+            <column name="calories" value="247"/>
+            <column name="carbs" value="41"/>
+            <column name="fats" value="3.4"/>
+            <column name="protein" value="13"/>
+        </insert>
+
+        <insert tableName="food">
+            <column name="name" value="Turkey Breast"/>
+            <column name="weight" value="100"/>
+            <column name="calories" value="104"/>
+            <column name="carbs" value="0"/>
+            <column name="fats" value="0.7"/>
+            <column name="protein" value="24"/>
+        </insert>
+
+        <insert tableName="food">
+            <column name="name" value="Lentils"/>
+            <column name="weight" value="100"/>
+            <column name="calories" value="116"/>
+            <column name="carbs" value="20"/>
+            <column name="fats" value="0.4"/>
+            <column name="protein" value="9"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

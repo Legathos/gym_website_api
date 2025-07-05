@@ -2,11 +2,13 @@ package com.gym_website.service;
 
 import com.gym_website.dto.ExercisesDto;
 import com.gym_website.dto.ResponseDto;
+import com.gym_website.dto.UserDto;
 import com.gym_website.entity.ExercisesEntity;
 import com.gym_website.mapper.ExercisesMapper;
 import org.springframework.stereotype.Service;
 import com.gym_website.repository.ExercisesRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -15,10 +17,12 @@ public class ExercisesService {
 
     private final ExercisesMapper exercisesMapper;
     private final ExercisesRepository exercisesRepository;
-    public ExercisesService(ExercisesMapper exercisesMapper, ExercisesRepository exercisesRepository){
+    private final UserService userService;
 
+    public ExercisesService(ExercisesMapper exercisesMapper, ExercisesRepository exercisesRepository, UserService userService){
         this.exercisesMapper = exercisesMapper;
         this.exercisesRepository = exercisesRepository;
+        this.userService = userService;
     }
 
     public ResponseDto addExercise(ExercisesDto exercisesDto){
@@ -45,8 +49,24 @@ public class ExercisesService {
     }
 
     public List<ExercisesDto> getExercisesByUserId (Long userId){
-        List<ExercisesEntity> exercisesEntities = exercisesRepository.findByUserId(userId);
-        return exercisesMapper.toDtos(exercisesEntities);
+        // Get user-specific exercises
+        List<ExercisesEntity> userExercises = exercisesRepository.findByUserId(userId);
+
+        // Get default exercises (associated with system user)
+        // Find system user by username
+        UserDto systemUser = userService.getUserInfoByUsername("system");
+        if (systemUser != null) {
+            List<ExercisesEntity> defaultExercises = exercisesRepository.findByUserId(systemUser.getId());
+
+            // Combine both lists
+            List<ExercisesEntity> allExercises = new ArrayList<>(userExercises);
+            allExercises.addAll(defaultExercises);
+
+            return exercisesMapper.toDtos(allExercises);
+        }
+
+        // If system user doesn't exist, just return user exercises
+        return exercisesMapper.toDtos(userExercises);
     }
 
 

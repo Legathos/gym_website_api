@@ -1,4 +1,6 @@
 HELP.md
+.env
+src/main/resources/liquibase.properties
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/

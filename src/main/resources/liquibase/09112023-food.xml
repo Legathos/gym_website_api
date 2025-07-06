@@ -1,30 +1,31 @@
 <databaseChangeLog
         xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
-        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd
-      http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.5.xsd">
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
     <changeSet id="food" author="albert">
         <createTable tableName="food">
             <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
+            <column name="barcode" type="BIGINT" >
+                <constraints nullable="true"/>
+            </column>
             <column name="name" type="varchar(256)">
                 <constraints nullable="false"/>
             </column>
-            <column name="weight" type="BIGINT">
+            <column name="weight" type="DOUBLE">
                 <constraints nullable="false"/>
             </column>
-            <column name="calories" type="BIGINT" >
+            <column name="calories" type="DOUBLE" >
                 <constraints nullable="false"/>
             </column>
-            <column name="carbs" type="BIGINT" >
+            <column name="carbs" type="DOUBLE" >
                 <constraints nullable="false"/>
             </column>
-            <column name="fats" type="BIGINT" >
+            <column name="fats" type="DOUBLE" >
                 <constraints nullable="false"/>
             </column>
-            <column name="protein" type="BIGINT" >
+            <column name="protein" type="DOUBLE" >
                 <constraints nullable="false"/>
             </column>
 

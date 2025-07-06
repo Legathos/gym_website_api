@@ -1,0 +1,20 @@
+package com.gym_website.dto;
+
+import lombok.Data;
+
+import java.util.Date;
+
+@Data
+public class LoggerDto {
+    private Long id;
+    private Long user_id;
+    private Date date;
+    private Long food_id;
+    private String food_name;
+    private Integer meal;
+    private Double weight;
+    private Long calories;
+    private Double carbs;
+    private Double fats;
+    private Double protein;
+}
